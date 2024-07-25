@@ -27,11 +27,11 @@
               <td>{{ i + 1 }}.</td>
               <td>{{ visitor.tanggal }}, {{ visitor.waktu }}</td>
               <td>{{ visitor.nama }}</td>
-              <td>{{ visitor.keanggotaan.nama }}</td>
-              <td>{{ visitor.tingkat }}</td>
-              <td>{{ visitor.jurusan }}</td>
               <td>{{ visitor.kelas }}</td>
+              <td>{{ visitor.keanggotaan.nama }}</td>
               <td>{{ visitor.keperluan.nama }}</td>
+              <td>{{ visitor.jurusan}}</td>
+              <td>{{ visitor.tingkat }}</td>
             </tr>
           </tbody>
         </table>      
@@ -44,18 +44,24 @@
 </template>
 
 <script setup>
+
 const supabase = useSupabaseClient();
+
 const Semua = ref(0);
+
 const keyword = ref("");
+
 const visitors = ref([]);
+
 const getPengunjung = async () => {
   const { data, error } = await supabase
-    .from("Pengunjung")
+    .from("pengunjung")
     .select(`*, keanggotaan(nama), keperluan(nama)`)
     .order("id", { ascending: false })
     .ilike("nama", `%${keyword.value}%`);
   if (data) visitors.value = data;
 };
+
 const getJumlah = async () => {
   const { data, error } = await supabase
     .from("jumlahpengunjung")
@@ -63,6 +69,7 @@ const getJumlah = async () => {
     .single()
   if (data) Semua.value = data.jumlahpengunjung
 };
+
 onMounted(() => {
   getPengunjung();
   getJumlah();
