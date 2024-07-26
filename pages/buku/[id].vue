@@ -51,13 +51,3 @@ onMounted(() => {
   getBooksById();
 });
 </script>
-
-<style scoped>
-.bg {
-  background-image: url(assets/img/yy.webp);
-}
-.ukuran {
-  width: 180px;
-  display: flex;
-}
-</style>
