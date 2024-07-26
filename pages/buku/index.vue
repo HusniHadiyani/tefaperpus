@@ -52,28 +52,3 @@ onMounted(() => {
     </nuxt-link>
   </div>
 </template>
-
-<style scoped>
-.bg {
-  background-image: url(assets/img/yy.webp);
-  height: 100;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-}
-.card-body {
-  width: 100%;
-  height: em;
-  padding: 0;
-}
-.cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 0 30;
-}
-
-.btn {
-  background-color: rgb(14, 154, 235);
-}
-</style>
